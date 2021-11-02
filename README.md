@@ -1,0 +1,1 @@
+# goliveview stimulus controller
