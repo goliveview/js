@@ -40,6 +40,12 @@ export default {
             }
         }
     }),
+    addClass: operation => selectAll(operation, (el, value) => {
+        el.classList.add(value);
+    }),
+    removeClass: operation => selectAll(operation, (el, value) => {
+        el.classList.remove(value);
+    }),
     styles: operation => selectAll(operation, (el, value) => {
         for (const k in value) {
             el.style[k] = value[k]
