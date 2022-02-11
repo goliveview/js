@@ -10,17 +10,6 @@ module.exports = {
     library: "goliveviewStimulus",
     libraryTarget: "umd",
   },
-  externals: {
-    "@hotwired/stimulus": {
-      commonjs: "@hotwired/stimulus",
-      commonjs2: "@hotwired/stimulus",
-      amd: "@hotwired/stimulus",
-      root: "@hotwired/stimulus",
-    },
-    "morphdom": "morphdom",
-    "lodash.debounce": "lodash.debounce",
-    "regenerator-runtime": "regenerator-runtime"
-  },
   module: {
     rules: [
       {
