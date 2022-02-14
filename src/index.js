@@ -83,6 +83,16 @@ export class GoliveviewController extends Controller {
 
     if (this.dispatcher) {
       this.dispatcher(eventId, selector, template, json)
+      // reset form
+      if (el) {
+        if (el instanceof HTMLFormElement) {
+        el.reset();
+        }
+
+        if (el.form && el.form instanceof HTMLFormElement) {
+          el.form.reset();
+        }
+      }
     }
   }
 
