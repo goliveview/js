@@ -43,11 +43,7 @@ export class GoliveviewController extends Controller {
 
   onSocketReconnect = () => {
     if (this.dispatcher) {
-      if (!this.eventIdValue) {
-        console.error("action submit requires eventId")
-        return
-      }
-      this.dispatcher(this.eventIdValue, this.selectorValue, this.templateValue, this.paramsValue)
+      this.dispatcher("reconnect", null, null, null)
     }
   }
 
