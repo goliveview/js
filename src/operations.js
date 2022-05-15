@@ -46,13 +46,16 @@ export default {
     removeClass: operation => selectAll(operation, (el, value) => {
         el.classList.remove(value);
     }),
-    styles: operation => selectAll(operation, (el, value) => {
+    setStyle: operation => selectAll(operation, (el, value) => {
         for (const k in value) {
             el.style[k] = value[k]
         }
     }),
-    value: operation => selectAll(operation, (el, value) => {
-        el.value = value;
+    setValue: operation => selectAll(operation, (el, value) => {
+        el.value = value || '';
+    }),
+    setInnerHTML: operation => selectAll(operation, (el, value) => {
+        el.innerHTML = value || '';
     }),
     // dom mutations
     morph: operation => selectAll(operation, (el, value) => {

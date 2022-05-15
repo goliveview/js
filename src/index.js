@@ -2,7 +2,7 @@ import {Controller} from "@hotwired/stimulus"
 import debounce from "lodash.debounce";
 import operations from "./operations";
 
-export class GoliveviewController extends Controller {
+export class Dispatcher extends Controller {
   static values = {
     url: String,
     eventId: String,
@@ -19,7 +19,7 @@ export class GoliveviewController extends Controller {
       connectURL = `wss://${window.location.host}${window.location.pathname}`
     }
 
-    this.changeDebounced = debounce(this.changeDebounced, this.debounceWaitValue).bind(this);
+    this.eventDebounced = debounce(this.eventDebounced, this.debounceWaitValue).bind(this);
     this.onSocketReconnect.bind(this);
     try {
       this.dispatcher = eventDispatcher(connectURL, [], this.onSocketReconnect, this.invokeOp)
@@ -52,7 +52,7 @@ export class GoliveviewController extends Controller {
     operations[eventData.op](eventData);
   }
 
-  submit(e) {
+  event(e) {
     e.preventDefault()
     const {eventId, selector, template, ...rest} = e.params
     if (!eventId) {
@@ -92,12 +92,8 @@ export class GoliveviewController extends Controller {
     }
   }
 
-  changeDebounced(e) {
-    this.submit(e)
-  }
-
-  change(e) {
-    this.submit(e)
+  eventDebounced(e) {
+    this.event(e)
   }
 
   navigate(e) {
